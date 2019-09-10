@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Actor : MonoBehaviour
+public class ActorObject : MonoBehaviour
 {
     [SerializeField]
     protected int health = 1;
     public int Health { get { return health; } /*private set { health = value; }*/ }
     [SerializeField]
-    [Range(0.1f, 1f)]
-    protected float movementSpeed = 5f;
+    [Range(0.1f, 20f)]
+    protected float movementSpeed = 1f;
     [SerializeField]
     protected Transform actorTransform;
     [SerializeField]
