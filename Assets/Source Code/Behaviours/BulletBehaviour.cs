@@ -21,18 +21,21 @@ public class BulletBehaviour : ActorObject
     private float speedMultiplier = 2f;
     private Vector3 movementVector;
     private Vector3 startingPosition;
+
     protected override void Start()
     {
         base.Start();
-        startingPosition = actorTransform.position;
+    }
 
+    private void OnEnable()
+    {
+        startingPosition = actorTransform.position;
     }
 
     private void Update()
     {
         Movement(maxRange);
     }
-
 
     private void Movement(float range)
     {
@@ -55,6 +58,8 @@ public class BulletBehaviour : ActorObject
         if (animalShot)
         {
             animalShot.TakeDamage(DamageCalculation(damageBase, animalShot.AnimalType));
+            //Destroy bullet on impact aswell
+            TakeDamage(Health);
         }
     }
 

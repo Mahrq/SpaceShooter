@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Script controls the player's movement and shooting capability
+/// </summary>
 public class PlayerBehaviour : ActorObject
 {
     [SerializeField]
     private Transform gunBarrelTransform;
-    private Vector3 bulletSpawnPosition;
     [SerializeField]
     private GunType selectedWeapon;
     private ObjectPool selectedBulletPool;
@@ -16,13 +17,21 @@ public class PlayerBehaviour : ActorObject
     protected override void Start()
     {
         base.Start();
-        bulletSpawnPosition = gunBarrelTransform.position;
         selectedBulletPool = GameMaster.instance.BulletPools[(int)selectedWeapon];
     }
     private void Update()
     {
 
         Movement(actorTransform);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            CycleWeapon(ref selectedWeapon);
+        }
         
     }
 
@@ -37,7 +46,17 @@ public class PlayerBehaviour : ActorObject
 
     private void Shoot()
     {
+        selectedBulletPool.SpawnObject(gunBarrelTransform.position, Quaternion.identity);
+    }
 
+    private void CycleWeapon(ref GunType currentWeapon)
+    {
+        int current = (int)currentWeapon;
+        current++;
+        current %= GameMaster.instance.BulletPools.Length;
+        currentWeapon = (GunType)current;
+        selectedBulletPool = GameMaster.instance.BulletPools[(int)currentWeapon];
+        Debug.LogFormat("WeaponSwitch: {0}", selectedBulletPool.ObjectPoolName);
     }
 
 }

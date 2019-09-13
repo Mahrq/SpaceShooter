@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4101986300669836571}
   - component: {fileID: 4101986300669836548}
   - component: {fileID: -7638699329643215203}
-  m_Layer: 0
+  - component: {fileID: -3600867299889433829}
+  m_Layer: 9
   m_Name: Rifle_TEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +89,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4101986300669836549}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -109,3 +110,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!114 &-3600867299889433829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101986300669836549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d12dc3ec8dc234292c1b5bd1eb4930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  movementSpeed: 15
+  actorTransform: {fileID: 0}
+  actorRigidbody: {fileID: 0}
+  thisGunType: 0
+  strongAgainst: 1
+  weakAgainst: 2
+  maxRange: 10
+  damageBase: 2
+  speedMultiplier: 2
