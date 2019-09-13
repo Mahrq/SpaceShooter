@@ -14,3 +14,11 @@ public enum AnimalType
     Deer,
     Bear
 }
+
+enum PlayerEvent
+{
+    HealthUpdate,
+    ShootWeapon,
+    SwapWeapon,
+    Death
+}
