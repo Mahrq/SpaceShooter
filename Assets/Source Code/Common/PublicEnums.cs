@@ -15,7 +15,7 @@ public enum AnimalType
     Bear
 }
 
-enum PlayerEvent
+public enum PlayerEvent
 {
     HealthUpdate,
     ShootWeapon,
