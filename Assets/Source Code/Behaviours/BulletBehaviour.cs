@@ -25,11 +25,20 @@ public class BulletBehaviour : ActorObject
     protected override void Start()
     {
         base.Start();
+        startingPosition = actorTransform.position;
     }
 
     private void OnEnable()
     {
-        startingPosition = actorTransform.position;
+        if (startingPosition == Vector3.zero)
+        {
+            startingPosition = actorTransform.position;
+        }      
+    }
+
+    private void OnDisable()
+    {
+        startingPosition = Vector3.zero;
     }
 
     private void Update()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimalBehaviour : ActorObject
 {
+    private Animator animalAnim;
     [SerializeField]
     private AnimalType animalType;
     public AnimalType AnimalType { get { return animalType; } private set { animalType = value; } }
@@ -20,11 +21,13 @@ public class AnimalBehaviour : ActorObject
     {
         base.Start();
         playerRef = GameMaster.instance.PlayerRef;
+        animalAnim = this.GetComponent<Animator>();
     }
 
     private void Update()
     {
         isAlerted = AlertState(playerRef);
+        animalAnim.SetBool("IsRunningAway", isAlerted);
         if (isAlerted)
         {
             Movement();
@@ -40,6 +43,7 @@ public class AnimalBehaviour : ActorObject
     private bool AlertState(GameObject target)
     {
         float alertedArea = Vector3.Distance(actorTransform.position, target.transform.position);
+        //Debug.Log("Distance from animal: " + alertedArea.ToString("F2"));
         //Initial detect
         if (alertedArea < playerDetectRange)
         {
