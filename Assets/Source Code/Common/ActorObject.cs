@@ -7,7 +7,7 @@ public class ActorObject : MonoBehaviour
 {
     [SerializeField]
     protected int health = 1;
-    public int Health { get { return health; } /*private set { health = value; }*/ }
+    public int CurrentHealth { get; protected set; }
     [SerializeField]
     [Range(0.1f, 20f)]
     protected float movementSpeed = 1f;
@@ -16,20 +16,23 @@ public class ActorObject : MonoBehaviour
     [SerializeField]
     protected Rigidbody actorRigidbody;
     protected GameObject actorGameObject;
-    public bool IsDead { get; private set; }
+    public bool IsDead { get; protected set; }
 
     virtual protected void Start()
     {
         actorGameObject = this.gameObject;
         actorTransform = this.GetComponent<Transform>();
         actorRigidbody = this.GetComponent<Rigidbody>();
+        CurrentHealth = health;
     }
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
-        health -= amount;
-        if (health <= 0)
+        CurrentHealth -= amount;
+        Debug.Log($"{actorGameObject.name} took {amount} Damage and has {CurrentHealth} health left");
+        if (CurrentHealth <= 0)
         {
+            CurrentHealth = 0;
             IsDead = true;
             Death(IsDead);
         }

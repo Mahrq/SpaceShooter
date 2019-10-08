@@ -30,10 +30,14 @@ public class BulletBehaviour : ActorObject
 
     private void OnEnable()
     {
-        if (startingPosition == Vector3.zero)
+        if (actorTransform)
         {
-            startingPosition = actorTransform.position;
-        }      
+            if (startingPosition == Vector3.zero)
+            {
+                startingPosition = actorTransform.position;
+            }
+        }
+  
     }
 
     private void OnDisable()
@@ -51,7 +55,7 @@ public class BulletBehaviour : ActorObject
         //If bullet exceeds its travel distance allowed then object is disabled.
         if (Vector3.Distance(startingPosition, actorTransform.position) >= range)
         {
-            TakeDamage(Health);
+            TakeDamage(CurrentHealth);
         }
         //Move the bullet forward in a straight direction.
         else
@@ -68,24 +72,23 @@ public class BulletBehaviour : ActorObject
         {
             animalShot.TakeDamage(DamageCalculation(damageBase, animalShot.AnimalType));
             //Destroy bullet on impact aswell
-            TakeDamage(Health);
+            TakeDamage(CurrentHealth);
         }
     }
 
     private int DamageCalculation(int baseDamage, AnimalType targetCompare)
     {
-        int totalDamage = baseDamage;
 
         if (targetCompare == strongAgainst)
         {
-            return totalDamage = baseDamage * 2;
+            return baseDamage * 2;
         }
         else if (targetCompare == weakAgainst)
         {
-            return totalDamage = (baseDamage - 1);
+            return (baseDamage - 1);
         }
 
-        return totalDamage;
+        return baseDamage;
     }
 
 }

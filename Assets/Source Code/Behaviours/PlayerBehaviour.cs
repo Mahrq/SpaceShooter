@@ -8,6 +8,7 @@ public class PlayerBehaviour : ActorObject
     //References
     [SerializeField]
     private Transform gunBarrelTransform;
+    private Animator actorAnimator;
     [SerializeField]
     private GunType selectedWeapon;
     private ObjectPool selectedBulletPool;
@@ -25,21 +26,23 @@ public class PlayerBehaviour : ActorObject
     //Movement properties
     private Vector3 movementVector;
     private float hInput, vInput;
+    private bool isMoving;
+    
     
     protected override void Start()
     {
         base.Start();
+        actorAnimator = this.GetComponent<Animator>();
         selectedWeapon = GunType.Rifle;
         selectedBulletPool = GameMaster.instance.BulletPools[(int)selectedWeapon];
         currentFireRate = (int)weaponFireRates.x;
         gameEventsHandler.CallEvent(PlayerEvent.SwapWeapon, selectedWeapon);
         gameEventsHandler.CallEvent(PlayerEvent.ShootWeapon, weaponAmmoCount);
+        gameEventsHandler.CallEvent(PlayerEvent.HealthUpdate, CurrentHealth);
     }
     private void Update()
     {
-        
-
-        Movement(actorTransform);
+        Movement(actorTransform, isMoving);
         //Start the counter when the player is unable to shoot to simulate fire rate.
         if (!canShoot)
         {
@@ -65,11 +68,13 @@ public class PlayerBehaviour : ActorObject
         
     }
     //Movement controls with left and right input.
-    private void Movement(Transform objectToMove)
+    private void Movement(Transform objectToMove, bool objectIsMoving)
     {
         hInput = Input.GetAxisRaw("Horizontal");
         vInput = Input.GetAxisRaw("Vertical");
         movementVector = new Vector3(hInput, 0, vInput) * movementSpeed * Time.deltaTime;
+        objectIsMoving = hInput != 0 || vInput != 0;
+        actorAnimator.SetBool("IsMoving", objectIsMoving);
         objectToMove.Translate(movementVector);
     }
     //Depending on the slected weapon, the method will spawn the type of bullet and subtract the ammo amount.
@@ -133,5 +138,38 @@ public class PlayerBehaviour : ActorObject
         }
         gameEventsHandler.CallEvent(PlayerEvent.SwapWeapon, currentWeapon);
         Debug.LogFormat("WeaponSwitch: {0}", selectedBulletPool.ObjectPoolName);
+    }
+    public override void TakeDamage(int amount)
+    {
+        CurrentHealth -= amount;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, 5);
+        gameEventsHandler.CallEvent(PlayerEvent.HealthUpdate, CurrentHealth);
+        if (CurrentHealth <= 0)
+        {
+            IsDead = true;
+            Death(IsDead);
+        }
+    }
+
+    public void ReplenishAmmo()
+    {
+        int amountToReplenish = Random.Range(1, 5);
+        GunType ammoType = (GunType)Random.Range((int)GunType.Rifle, ((int)GunType.Scoped + 1));
+        switch (ammoType)
+        {
+            case GunType.Rifle:
+                weaponAmmoCount.x += amountToReplenish;
+                break;
+            case GunType.Shotgun:
+                weaponAmmoCount.y += amountToReplenish;
+                break;
+            case GunType.Scoped:
+                weaponAmmoCount.z += amountToReplenish;
+                break;
+            default:
+                break;
+        }
+        Debug.Log($"Replenished {amountToReplenish} {ammoType} ammo");
+        gameEventsHandler.CallEvent(PlayerEvent.ShootWeapon, weaponAmmoCount);
     }
 }

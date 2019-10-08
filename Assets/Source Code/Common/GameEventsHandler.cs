@@ -10,9 +10,10 @@ public class GameEventsHandler
     public delegate void NoParams();
     public delegate void Vector3Params(Vector3 vector);
     public delegate void GunTypeParams(GunType gunType);
+    public delegate void IntParams(int intNumber);
 
     //Player Events
-    public static event NoParams OnPlayerUpdateHealth;
+    public static event IntParams OnPlayerUpdateHealth;
     public static event Vector3Params OnPlayerShootsWeapon;
     public static event GunTypeParams OnPlayerSwapWeapon;
     public static event NoParams OnPlayerDeath;
@@ -56,6 +57,19 @@ public class GameEventsHandler
         }
     }
 
+    public void CallEvent(PlayerEvent playerEvent, int intNumber)
+    {
+        switch (playerEvent)
+        {
+            case PlayerEvent.HealthUpdate:
+                CheckEventSubscribers(OnPlayerUpdateHealth, intNumber);
+                break;
+            default:
+                Debug.LogError("Invalid Parameter for this overload of the method");
+                break;
+        }
+    }
+
     private void CheckEventSubscribers(NoParams eventToCheck)
     {
         if (eventToCheck != null)
@@ -77,6 +91,14 @@ public class GameEventsHandler
         if (eventToCheck != null)
         {
             eventToCheck(vector);
+        }
+    }
+
+    private void CheckEventSubscribers(IntParams eventToCheck, int intNumber)
+    {
+        if (eventToCheck != null)
+        {
+            eventToCheck(intNumber);
         }
     }
 

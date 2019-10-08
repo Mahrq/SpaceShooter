@@ -8,6 +8,7 @@ public class AnimalBehaviour : ActorObject
     [SerializeField]
     private AnimalType animalType;
     public AnimalType AnimalType { get { return animalType; } private set { animalType = value; } }
+    private ObjectPool selectedCorpsePool;
     [SerializeField]
     private float playerDetectRange = 5f;
     [SerializeField]
@@ -21,7 +22,13 @@ public class AnimalBehaviour : ActorObject
     {
         base.Start();
         playerRef = GameMaster.instance.PlayerRef;
+        selectedCorpsePool = GameMaster.instance.PickUpPools[(int)animalType];
         animalAnim = this.GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        CurrentHealth = health;
     }
 
     private void Update()
@@ -58,6 +65,15 @@ public class AnimalBehaviour : ActorObject
         else
         {
             return false;
+        }
+    }
+
+    protected override void Death(bool deathStatus)
+    {
+        if (deathStatus)
+        {
+            selectedCorpsePool.SpawnObject(actorTransform.position, Quaternion.identity);
+            actorGameObject.SetActive(false);
         }
     }
 }

@@ -18,6 +18,7 @@ public class CameraBehaviour : MonoBehaviour
     private void Start()
     {
         cameraTransform = this.GetComponent<Transform>();
+        cameraTarget = GameMaster.instance.PlayerRef.transform;
     }
     private void LateUpdate()
     {
