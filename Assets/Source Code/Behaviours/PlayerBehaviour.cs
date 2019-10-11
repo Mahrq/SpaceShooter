@@ -27,8 +27,7 @@ public class PlayerBehaviour : ActorObject
     private Vector3 movementVector;
     private float hInput, vInput;
     private bool isMoving;
-    
-    
+    //Find Neccessary references
     protected override void Start()
     {
         base.Start();
@@ -40,6 +39,7 @@ public class PlayerBehaviour : ActorObject
         gameEventsHandler.CallEvent(PlayerEvent.ShootWeapon, weaponAmmoCount);
         gameEventsHandler.CallEvent(PlayerEvent.HealthUpdate, CurrentHealth);
     }
+    //Runs movement calls and input for firing and swapping weapons.
     private void Update()
     {
         Movement(actorTransform, isMoving);
@@ -139,6 +139,7 @@ public class PlayerBehaviour : ActorObject
         gameEventsHandler.CallEvent(PlayerEvent.SwapWeapon, currentWeapon);
         Debug.LogFormat("WeaponSwitch: {0}", selectedBulletPool.ObjectPoolName);
     }
+    //Adds an event call to the UI to update in addition to damage calculation. 
     public override void TakeDamage(int amount)
     {
         CurrentHealth -= amount;
@@ -150,7 +151,7 @@ public class PlayerBehaviour : ActorObject
             Death(IsDead);
         }
     }
-
+    //Method restores ammo reserve for player when called by an object that collides with the player.
     public void ReplenishAmmo()
     {
         int amountToReplenish = Random.Range(1, 5);
