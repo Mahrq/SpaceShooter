@@ -27,6 +27,12 @@ public class PlayerBehaviour : ActorObject
     private Vector3 movementVector;
     private float hInput, vInput;
     private bool isMoving;
+    //Player properties
+    [SerializeField]
+    [Range(1f, 600f)]
+    [Tooltip("Time in seconds when the player's health is lost")]
+    private float healthDecayInterval = 20f;
+    private float healthDecayTimer = 0;
     //Find Neccessary references
     protected override void Start()
     {
@@ -42,6 +48,7 @@ public class PlayerBehaviour : ActorObject
     //Runs movement calls and input for firing and swapping weapons.
     private void Update()
     {
+        healthDecayTimer += Time.deltaTime;
         Movement(actorTransform, isMoving);
         //Start the counter when the player is unable to shoot to simulate fire rate.
         if (!canShoot)
@@ -64,6 +71,12 @@ public class PlayerBehaviour : ActorObject
         if (Input.GetButtonDown("Fire2") && canShoot)
         {
             CycleWeapon(ref selectedWeapon);
+        }
+        //Player loses health after the timer has passed the healthDecayInterval
+        if (healthDecayTimer > healthDecayInterval)
+        {
+            TakeDamage(1);
+            healthDecayTimer = 0;
         }
         
     }
@@ -150,6 +163,7 @@ public class PlayerBehaviour : ActorObject
             IsDead = true;
             Death(IsDead);
         }
+
     }
     //Method restores ammo reserve for player when called by an object that collides with the player.
     public void ReplenishAmmo()

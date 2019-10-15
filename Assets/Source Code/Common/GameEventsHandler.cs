@@ -11,12 +11,15 @@ public class GameEventsHandler
     public delegate void Vector3Params(Vector3 vector);
     public delegate void GunTypeParams(GunType gunType);
     public delegate void IntParams(int intNumber);
+    public delegate void AnimalParams(AnimalType animalType);
 
     //Player Events
     public static event IntParams OnPlayerUpdateHealth;
     public static event Vector3Params OnPlayerShootsWeapon;
     public static event GunTypeParams OnPlayerSwapWeapon;
     public static event NoParams OnPlayerDeath;
+
+    //Game Events
 
 
     public void CallEvent(PlayerEvent playerEvent)
@@ -99,6 +102,14 @@ public class GameEventsHandler
         if (eventToCheck != null)
         {
             eventToCheck(intNumber);
+        }
+    }
+
+    private void CheckEventSubscribers(AnimalParams eventToCheck, AnimalType animalType)
+    {
+        if (eventToCheck != null)
+        {
+            eventToCheck(animalType);
         }
     }
 

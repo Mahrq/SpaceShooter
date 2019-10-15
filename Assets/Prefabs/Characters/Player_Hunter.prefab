@@ -215,3 +215,4 @@ MonoBehaviour:
   selectedWeapon: 0
   weaponFireRates: {x: 60, y: 40, z: 80}
   weaponAmmoCount: {x: 15, y: 15, z: 15}
+  healthDecayInterval: 10
