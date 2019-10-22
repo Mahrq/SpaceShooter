@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 /// <summary>
 /// Script controls the player's movement and shooting capability
@@ -186,5 +187,10 @@ public class PlayerBehaviour : ActorObject
         }
         Debug.Log($"Replenished {amountToReplenish} {ammoType} ammo");
         gameEventsHandler.CallEvent(PlayerEvent.ShootWeapon, weaponAmmoCount);
+    }
+
+    protected override void Death(bool deathStatus)
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

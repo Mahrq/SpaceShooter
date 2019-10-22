@@ -180,7 +180,7 @@ MonoBehaviour:
   movementSpeed: 10
   actorTransform: {fileID: 0}
   actorRigidbody: {fileID: 0}
-  animalType: 1
+  thisAnimalType: 1
   playerDetectRange: 12
   escapeGap: 15
   isAlerted: 0

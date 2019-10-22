@@ -20,7 +20,7 @@ public class GameEventsHandler
     public static event NoParams OnPlayerDeath;
 
     //Game Events
-
+    public static event AnimalParams OnAnimalDeath;
 
     public void CallEvent(PlayerEvent playerEvent)
     {
@@ -71,6 +71,11 @@ public class GameEventsHandler
                 Debug.LogError("Invalid Parameter for this overload of the method");
                 break;
         }
+    }
+
+    public void CallEvent(AnimalType animalType)
+    {
+        CheckEventSubscribers(OnAnimalDeath, animalType);
     }
 
     private void CheckEventSubscribers(NoParams eventToCheck)

@@ -99,7 +99,7 @@ MonoBehaviour:
   movementSpeed: 9
   actorTransform: {fileID: 0}
   actorRigidbody: {fileID: 0}
-  animalType: 2
+  thisAnimalType: 2
   playerDetectRange: 8
   escapeGap: 10
   isAlerted: 0

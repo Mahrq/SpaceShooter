@@ -53,7 +53,7 @@ public class LevelTileBehaviour : MonoBehaviour
 
     private void SpawnNextTile()
     {
-        int zPos = (int)myTransform.position.z + (GameMaster.instance.GameTileCount * GameMaster.instance.TileLength);
+        int zPos = (int)myTransform.position.z + ((GameMaster.instance.GameTileCount + 1) * GameMaster.instance.TileLength);
         Vector3 spawnPosition = new Vector3(0, 0, zPos);
         tilePool.SpawnObject(spawnPosition, Quaternion.identity);
         this.gameObject.SetActive(false);

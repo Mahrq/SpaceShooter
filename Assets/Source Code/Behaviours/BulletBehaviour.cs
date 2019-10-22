@@ -70,7 +70,7 @@ public class BulletBehaviour : ActorObject
         AnimalBehaviour animalShot = other.GetComponent<AnimalBehaviour>();
         if (animalShot)
         {
-            animalShot.TakeDamage(DamageCalculation(damageBase, animalShot.AnimalType));
+            animalShot.TakeDamage(DamageCalculation(damageBase, animalShot.ThisAnimalType));
             //Destroy bullet on impact aswell
             TakeDamage(CurrentHealth);
         }
