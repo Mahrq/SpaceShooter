@@ -191,6 +191,8 @@ public class PlayerBehaviour : ActorObject
 
     protected override void Death(bool deathStatus)
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        actorGameObject.SetActive(false);
+        gameEventsHandler.CallEvent(PlayerEvent.Death);
     }
 }

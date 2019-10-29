@@ -22,6 +22,19 @@ public class GameMaster : MonoBehaviour
     private GameObject animalPoolHolder;
     public ObjectPool[] AnimalPools { get; private set; }
 
+    private ObjectPool bloodSplatFx;
+    public ObjectPool BloodSplatFx
+    {
+        get
+        {
+            if (bloodSplatFx == null)
+            {
+                bloodSplatFx = this.GetComponent<ObjectPool>();
+            }
+            return bloodSplatFx;
+        }
+    }
+
     [SerializeField]
     private int gameTileCount = 2;
     public int GameTileCount { get { return gameTileCount; } }
@@ -32,8 +45,9 @@ public class GameMaster : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
+
         //Set references to the object pool. Pools in arrays are ordered by their ID set in the inspector.
+        bloodSplatFx = this.GetComponent<ObjectPool>();
         BulletPools = bulletPoolHolder.GetComponents<ObjectPool>().OrderBy(id => id.ObjectPoolID).ToArray();
         PickUpPools = pickUpPoolHolder.GetComponents<ObjectPool>().OrderBy(id => id.ObjectPoolID).ToArray();
         AnimalPools = animalPoolHolder.GetComponents<ObjectPool>().OrderBy(id => id.ObjectPoolID).ToArray();

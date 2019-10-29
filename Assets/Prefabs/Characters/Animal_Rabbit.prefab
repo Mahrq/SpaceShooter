@@ -99,8 +99,8 @@ MonoBehaviour:
   movementSpeed: 12
   actorTransform: {fileID: 0}
   actorRigidbody: {fileID: 0}
-  animalType: 0
-  playerDetectRange: 18
+  thisAnimalType: 0
+  playerDetectRange: 14
   escapeGap: 10
   isAlerted: 0
 --- !u!1 &1108955654867988010

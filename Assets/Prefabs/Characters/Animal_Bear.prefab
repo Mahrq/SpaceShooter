@@ -81,8 +81,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6532046, y: 5.116329, z: 0.8603201}
-  m_Center: {x: -0.030730069, y: 2.0581646, z: 0.47569036}
+  m_Size: {x: 2.7630296, y: 5.116329, z: 0.8603201}
+  m_Center: {x: -0.022447646, y: 2.0581646, z: 0.47569036}
 --- !u!114 &4048872380039822887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   actorTransform: {fileID: 0}
   actorRigidbody: {fileID: 0}
   thisAnimalType: 2
-  playerDetectRange: 8
+  playerDetectRange: 10
   escapeGap: 10
   isAlerted: 0
 --- !u!1 &7093587999198486077

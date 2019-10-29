@@ -18,6 +18,8 @@ public class AnimalBehaviour : ActorObject
     private Vector3 movementVector;
     private GameObject playerRef;
     private GameEventsHandler gameEventsHandler = new GameEventsHandler();
+    private bool runningAwayFromGunshot = false;
+    private Vector3 startingPositionWhenBulletHeard;
     protected override void Start()
     {
         base.Start();
@@ -29,6 +31,12 @@ public class AnimalBehaviour : ActorObject
     private void OnEnable()
     {
         CurrentHealth = health;
+        GameEventsHandler.OnPlayerShootsWeapon += HeardGunShot;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsHandler.OnPlayerShootsWeapon -= HeardGunShot;
     }
 
     private void Update()
@@ -39,6 +47,14 @@ public class AnimalBehaviour : ActorObject
         {
             Movement();
         }
+        else if (runningAwayFromGunshot)
+        {
+            if (AlertState(startingPositionWhenBulletHeard, out runningAwayFromGunshot))
+            {
+                animalAnim.SetBool("IsRunningAway", runningAwayFromGunshot);
+                Movement();
+            }
+        }
     }
 
     private void Movement()
@@ -47,6 +63,21 @@ public class AnimalBehaviour : ActorObject
         actorTransform.Translate(movementVector);
     }
 
+    private bool AlertState(Vector3 startPosition, out bool condition)
+    {
+        float runningAwayArea = Vector3.Distance(startPosition, actorTransform.position);
+        if (runningAwayArea < escapeGap)
+        {
+            condition = true;
+            return true;
+        }
+        else
+        {
+            condition = false;
+            return false;
+        }
+
+    }
     private bool AlertState(GameObject target)
     {
         float alertedArea = Vector3.Distance(actorTransform.position, target.transform.position);
@@ -75,6 +106,16 @@ public class AnimalBehaviour : ActorObject
             selectedCorpsePool.SpawnObject(actorTransform.position, Quaternion.identity);
             gameEventsHandler.CallEvent(thisAnimalType);
             actorGameObject.SetActive(false);
+        }
+    }
+
+    private void HeardGunShot(Vector3 eventParam)
+    {
+        float distanceFromPlayer = Vector3.Distance(actorTransform.position, playerRef.transform.position);
+        if (distanceFromPlayer < playerDetectRange + escapeGap)
+        {
+            startingPositionWhenBulletHeard = actorTransform.position;
+            runningAwayFromGunshot = true;
         }
     }
 }

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 1
-  chanceOfAmmoReplenish: 1
+  chanceOfAmmoReplenish: 0.3
 --- !u!1 &900430154543849099
 GameObject:
   m_ObjectHideFlags: 0

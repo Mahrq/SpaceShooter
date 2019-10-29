@@ -140,4 +140,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 1
-  chanceOfAmmoReplenish: 1
+  chanceOfAmmoReplenish: 0.3

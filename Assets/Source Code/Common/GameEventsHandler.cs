@@ -27,6 +27,7 @@ public class GameEventsHandler
         switch (playerEvent)
         {
             case PlayerEvent.Death:
+                CheckEventSubscribers(OnPlayerDeath);
                 break;
             default:
                 Debug.LogError("Invalid Parameter for this overload of the method");

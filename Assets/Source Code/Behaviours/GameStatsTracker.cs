@@ -10,9 +10,7 @@ public class GameStatsTracker : MonoBehaviour
     private GameObject StatsOverLay;
     [SerializeField] // set in inspector
     private Text[] trackedStatsUI;
-    private int[] trackedStats = new int[5];
-    private float gameSessionTimer;
-    private TimeSpan gameSessionTime = new TimeSpan();
+    private int[] trackedStats = new int[4];
 
     private enum GameStats
     {
@@ -20,35 +18,38 @@ public class GameStatsTracker : MonoBehaviour
         DeersKilled,
         BearsKilled,
         DistanceTraveled,
-        SessionTime
     }
 
     private void OnEnable()
     {
-        
+        GameEventsHandler.OnAnimalDeath += UpdateScore;
+        GameEventsHandler.OnPlayerDeath += AssignStats;
     }
 
     private void OnDisable()
     {
-        
+        GameEventsHandler.OnAnimalDeath -= UpdateScore;
+        GameEventsHandler.OnPlayerDeath -= AssignStats;
     }
 
     private void Start()
     {
-        gameSessionTimer = 0;
+        StatsOverLay.SetActive(false);
     }
-
-    private void Update()
+    
+    private void AssignStats()
     {
-        gameSessionTimer += Time.deltaTime;
-        gameSessionTime = TimeSpan.FromSeconds(gameSessionTimer);
-        //string formattedTime = string.Format("{0:D2}:{1:D2}:{2:D}");
-        //Debug.Log(formattedTime);
+        StatsOverLay.SetActive(true);
+        trackedStatsUI[(int)GameStats.RabbitsKilled].text = trackedStats[(int)GameStats.RabbitsKilled].ToString();
+        trackedStatsUI[(int)GameStats.DeersKilled].text = trackedStats[(int)GameStats.DeersKilled].ToString();
+        trackedStatsUI[(int)GameStats.BearsKilled].text = trackedStats[(int)GameStats.BearsKilled].ToString();
+        trackedStatsUI[(int)GameStats.DistanceTraveled].text = string.Format($"{GameMaster.instance.PlayerRef.transform.position.z.ToString("F0")} meters");
     }
 
-
-
-
+    private void UpdateScore(AnimalType animalType)
+    {
+        trackedStats[(int)animalType]++;
+    }
 
 
 

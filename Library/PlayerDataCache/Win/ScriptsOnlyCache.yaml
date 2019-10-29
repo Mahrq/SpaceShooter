@@ -79,44 +79,50 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9750}
     - Class: 114
-      Script: {instanceID: 9808}
+      Script: {instanceID: 9812}
     - Class: 114
-      Script: {instanceID: 9848}
+      Script: {instanceID: 9852}
     - Class: 114
-      Script: {instanceID: 9882}
+      Script: {instanceID: 9888}
     - Class: 114
-      Script: {instanceID: 10108}
+      Script: {instanceID: 10122}
     - Class: 114
-      Script: {instanceID: 10230}
+      Script: {instanceID: 10248}
     - Class: 114
-      Script: {instanceID: 10340}
+      Script: {instanceID: 10358}
     - Class: 114
-      Script: {instanceID: 10566}
+      Script: {instanceID: 10372}
     - Class: 114
-      Script: {instanceID: 10902}
+      Script: {instanceID: 10586}
     - Class: 114
-      Script: {instanceID: 10912}
+      Script: {instanceID: 10602}
     - Class: 114
-      Script: {instanceID: 10966}
+      Script: {instanceID: 10690}
     - Class: 114
-      Script: {instanceID: 11052}
+      Script: {instanceID: 10714}
     - Class: 114
-      Script: {instanceID: 11160}
+      Script: {instanceID: 10926}
     - Class: 114
-      Script: {instanceID: 11172}
+      Script: {instanceID: 10936}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 10992}
     - Class: 114
-      Script: {instanceID: 13464}
+      Script: {instanceID: 11080}
+    - Class: 114
+      Script: {instanceID: 11190}
+    - Class: 114
+      Script: {instanceID: 11202}
+    - Class: 114
+      Script: {instanceID: 11440}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
-    - Class: 135
-      Script: {instanceID: 0}
-    - Class: 136
-      Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -152,25 +158,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9650}
     - Class: 114
-      Script: {instanceID: 9808}
+      Script: {instanceID: 9812}
     - Class: 114
-      Script: {instanceID: 9848}
+      Script: {instanceID: 9852}
     - Class: 114
-      Script: {instanceID: 10230}
+      Script: {instanceID: 10248}
     - Class: 114
-      Script: {instanceID: 10354}
+      Script: {instanceID: 10372}
     - Class: 114
-      Script: {instanceID: 10582}
+      Script: {instanceID: 10602}
     - Class: 114
-      Script: {instanceID: 10670}
+      Script: {instanceID: 10690}
     - Class: 114
-      Script: {instanceID: 10798}
+      Script: {instanceID: 10714}
     - Class: 114
-      Script: {instanceID: 11052}
+      Script: {instanceID: 10822}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11080}
     - Class: 114
-      Script: {instanceID: 13464}
+      Script: {instanceID: 11440}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -224,6 +230,18 @@ ScriptsOnlyBuild:
     className: GameMaster
   - hash:
       serializedVersion: 2
+      Hash: 49682d2dbb771f0e238977c59872eb2e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: EnemyClass
+  - hash:
+      serializedVersion: 2
+      Hash: 0bdfb00f282768d3b17a8278090ae142
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -272,6 +290,12 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
+      Hash: 3dbf97c07036bd69b51ce08fdc4ea3a9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: FoodTracker
+  - hash:
+      serializedVersion: 2
       Hash: 9e70ecf91466f07d9bd649be625cae52
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -314,6 +338,12 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: DragonClass
+  - hash:
+      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -324,6 +354,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 0e3ed52dae8617a9e357be236f191630
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: LetterboxGameDemo
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -356,10 +392,22 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
+      Hash: 73b76b8a9150106e1c3aff430af9e40a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: PlayerMovement
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: 18c3345489538c5a67926a7edbe7a893
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: TerrainSegment
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -416,6 +464,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 5d6aab594fa635d477e00971e2ff2fa5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: FollowCam
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -458,10 +512,22 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: fcd666b5fade77f9b68052b62ceacd87
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: MenuSpin
+  - hash:
+      serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 95d86d606c5893d3ac8050d29afcf305
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: ForceCameraRatio
   - hash:
       serializedVersion: 2
       Hash: c78b0e8bf0c7573b3931cf2080f77d91
@@ -530,6 +596,12 @@ ScriptsOnlyBuild:
     className: CameraBehaviour
   - hash:
       serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: PlayerScrollScript
+  - hash:
+      serializedVersion: 2
       Hash: f0ea16973978d45467e5a747bc8350ed
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -554,10 +626,22 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
+      Hash: 17e88c2e96bd3ef3907072b8c32dbf4e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: TeleportPlayer
+  - hash:
+      serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: f69b2239d8dd8b809dd67ee15ce203b3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: Parralax
   - hash:
       serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
@@ -584,10 +668,22 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
+      Hash: 54c8b5ece517fc0b3af255d9d9c14631
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: LoopingTerrain
+  - hash:
+      serializedVersion: 2
       Hash: d791aa6007fa3640be1164ea75bb087d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 23f4a006ee6730c23c1a2275455d0ad7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LetterboxCamera
+    className: Demo
   - hash:
       serializedVersion: 2
       Hash: 5372ed2ce39229b1ac910757999a8be2
@@ -678,98 +774,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 49682d2dbb771f0e238977c59872eb2e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: EnemyClass
-  - hash:
-      serializedVersion: 2
-      Hash: 0bdfb00f282768d3b17a8278090ae142
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 3dbf97c07036bd69b51ce08fdc4ea3a9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: FoodTracker
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: DragonClass
-  - hash:
-      serializedVersion: 2
-      Hash: 0e3ed52dae8617a9e357be236f191630
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: LetterboxGameDemo
-  - hash:
-      serializedVersion: 2
-      Hash: 73b76b8a9150106e1c3aff430af9e40a
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: PlayerMovement
-  - hash:
-      serializedVersion: 2
-      Hash: 18c3345489538c5a67926a7edbe7a893
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: TerrainSegment
-  - hash:
-      serializedVersion: 2
-      Hash: 5d6aab594fa635d477e00971e2ff2fa5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: FollowCam
-  - hash:
-      serializedVersion: 2
-      Hash: fcd666b5fade77f9b68052b62ceacd87
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: MenuSpin
-  - hash:
-      serializedVersion: 2
-      Hash: 95d86d606c5893d3ac8050d29afcf305
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: ForceCameraRatio
-  - hash:
-      serializedVersion: 2
-      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: PlayerScrollScript
-  - hash:
-      serializedVersion: 2
-      Hash: 17e88c2e96bd3ef3907072b8c32dbf4e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: TeleportPlayer
-  - hash:
-      serializedVersion: 2
-      Hash: f69b2239d8dd8b809dd67ee15ce203b3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: Parralax
-  - hash:
-      serializedVersion: 2
-      Hash: 54c8b5ece517fc0b3af255d9d9c14631
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: LoopingTerrain
-  - hash:
-      serializedVersion: 2
-      Hash: 23f4a006ee6730c23c1a2275455d0ad7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: LetterboxCamera
-    className: Demo
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: H:/UC/Intro Production/u3204958_9754_Assessment3/_bin/v004/u3204958_9754_Assessment3.exe
+  playerPath: H:/UC/Intro Production/u3204958_9754_Assessment3/_bin/v005/Hunting.exe

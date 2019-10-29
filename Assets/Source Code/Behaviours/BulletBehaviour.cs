@@ -21,11 +21,20 @@ public class BulletBehaviour : ActorObject
     private float speedMultiplier = 2f;
     private Vector3 movementVector;
     private Vector3 startingPosition;
+    private ParticleSystem bulletTrail;
+    private ObjectPool hitConfirmFx;
 
     protected override void Start()
     {
         base.Start();
+        bulletTrail = this.GetComponent<ParticleSystem>();
+        hitConfirmFx = GameMaster.instance.BloodSplatFx;
         startingPosition = actorTransform.position;
+
+        if (bulletTrail)
+        {
+            bulletTrail.Play();
+        }
     }
 
     private void OnEnable()
@@ -35,6 +44,10 @@ public class BulletBehaviour : ActorObject
             if (startingPosition == Vector3.zero)
             {
                 startingPosition = actorTransform.position;
+            }
+            if (bulletTrail)
+            {
+                bulletTrail.Play();
             }
         }
   
@@ -71,6 +84,8 @@ public class BulletBehaviour : ActorObject
         if (animalShot)
         {
             animalShot.TakeDamage(DamageCalculation(damageBase, animalShot.ThisAnimalType));
+            //Spawn hit effect particle system.
+            hitConfirmFx.SpawnObject(transform.position, Quaternion.identity);
             //Destroy bullet on impact aswell
             TakeDamage(CurrentHealth);
         }
